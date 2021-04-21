@@ -1,0 +1,16 @@
+# Graceful shutdown
+
+Introduction to contexts and how to use them for graceful shutdown in a go application
+23 April 2021
+Tags: context, ctx, graceful-shutdown
+
+Tobias Brumhard
+tobias.brumhard@mail.schwarz
+
+## context package
+
+- this
+- is
+- insane
+
+: this is some speaker note
