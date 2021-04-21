@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"sync"
@@ -56,18 +57,42 @@ func run(ctx context.Context) error {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
+		defer log.Print("graceful shutdown done")
 
 		log.Print("doing sth while waiting for ctx cancel")
 		<-ctx.Done() // blocking until ctx cancel // HL
 
 		log.Print("shutting down")
 		time.Sleep(5 * time.Second) // work to do before shutdown // HL
-
-		log.Print("graceful shutdown done")
 	}()
 
 	<-ctx.Done() // waiting for context cancel from main // HL
 	wg.Wait()
 
 	return nil
+}
+
+func http_run(ctx context.Context) error {
+	defer log.Print("api shutdown done")
+
+	server := http.Server{
+		Addr: ":8080",
+		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			_, _ = w.Write([]byte("hello there\n"))
+		}),
+	}
+
+	go func() {
+		defer log.Print("stopped listening to requests")
+		log.Printf("accepting requests at %s ", server.Addr)
+		server.ListenAndServe() // HL
+	}()
+
+	<-ctx.Done() // HL
+
+	log.Printf("shutting down server gracefully")
+	shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer shutdownCancel()
+
+	return server.Shutdown(shutdownCtx) // HL
 }
