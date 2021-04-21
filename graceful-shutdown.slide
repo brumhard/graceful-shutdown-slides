@@ -6,6 +6,10 @@ Introduction to the context package and graceful shutdown in go applications
 Tobias Brumhard
 tobias.brumhard@mail.schwarz
 
+## structure
+
+.play structure.go /START OMIT/,/END OMIT/
+
 ## context package
 
 small intro to context
@@ -13,6 +17,12 @@ small intro to context
 ## signals
 
 what signals are there, how to react to it
+
+## select statement
+
+what is the select statement good for
+
+.play -edit select.go
 
 ##
 
