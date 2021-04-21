@@ -2,15 +2,52 @@
 
 Introduction to contexts and how to use them for graceful shutdown in a go application
 23 April 2021
-Tags: context, ctx, graceful-shutdown
 
 Tobias Brumhard
 tobias.brumhard@mail.schwarz
 
 ## context package
 
-- this
-- is
-- insane
+small intro to context
 
-: this is some speaker note
+## signals
+
+what signals are there, how to react to it
+
+##
+
+.image go_demo.gif
+.caption Golang mascot by Kirael-Art
+
+## func main - structure
+
+.code example_structure.go
+
+## func main - initialization
+
+context initialization:
+
+.code -numbers example.go /CTX START OMIT/,/CTX END OMIT/
+
+signal initialization:
+
+.code -numbers example.go /SIG START OMIT/,/SIG END OMIT/
+
+: SIGINT is for commandline ctrl-C
+: SIGTERM is for container shutdown kubernetes
+
+## func main - handling and execution
+
+signal handling:
+
+.code -numbers example.go /HANDLE START OMIT/,/HANDLE END OMIT/
+
+run():
+
+.code -numbers example.go /RUN START OMIT/,/RUN END OMIT/
+
+## func run
+
+.code example.go /^func run/,/^}/
+
+: TODO: speaker notes
