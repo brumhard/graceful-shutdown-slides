@@ -1,6 +1,6 @@
 # Graceful shutdown
 
-Introduction to contexts and how to use them for graceful shutdown in a go application
+Introduction to the context package and graceful shutdown in go applications
 23 April 2021
 
 Tobias Brumhard
@@ -51,3 +51,13 @@ run():
 .code example.go /^func run/,/^}/
 
 : TODO: speaker notes
+
+## docker example
+
+Dockerfile:
+
+.code Dockerfile /START OMIT/,/END OMIT/
+
+## http example
+
+.code example.go /^func http_run/,/^}/
