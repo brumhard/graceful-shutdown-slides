@@ -10,19 +10,19 @@ tobias.brumhard@mail.schwarz
 
 .play structure.go /START OMIT/,/END OMIT/
 
-## context package
-
-small intro to context
-
-## signals
-
-what signals are there, how to react to it
-
 ## select statement
 
 what is the select statement good for
 
-.play -edit select.go
+.play -edit select.go /^func main/,/^}/
+
+## context package
+
+.play -edit ctx.go /^func main/,/^}/
+
+## signals
+
+what signals are there, how to react to it
 
 ##
 

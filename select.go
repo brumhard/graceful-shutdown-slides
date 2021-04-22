@@ -14,7 +14,7 @@ func main() {
 
 	select {
 	case <-somec:
-	case <-time.After(2 * time.Second):
+	case <-time.After(time.Second):
 		log.Print("timeout")
 	}
 
