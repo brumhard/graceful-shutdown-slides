@@ -12,22 +12,26 @@ tobias.brumhard@mail.schwarz
 
 ## select statement
 
-what is the select statement good for
+_"The select statement lets a goroutine wait on multiple communication operations."_
 
 .play -edit select.go /^func main/,/^}/
 
 ## context package
 
+_"Package context defines the Context type, which carries deadlines, cancellation signals, and other request-scoped values across API boundaries and between processes."_
+
 .play -edit ctx.go /^func main/,/^}/
 
 ## signals
 
-what signals are there, how to react to it
+- limited form of inter-process communication
+- notify a process/ thread of an event anynchronously
+- examples:
+  - `Ctrl+C`
+  - container termination
+  - `kill -9 xxx` / `kill -s KILL xxx`
 
-##
-
-.image go_demo.gif
-.caption Golang mascot by Kirael-Art
+## main()
 
 ## func main - structure
 
@@ -61,6 +65,11 @@ run():
 .code example.go /^func run/,/^}/
 
 : TODO: speaker notes
+
+##
+
+.image go_demo.gif
+.caption Golang mascot by Kirael-Art
 
 ## docker example
 
