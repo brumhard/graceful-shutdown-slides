@@ -71,12 +71,6 @@ run():
 .image go_demo.gif
 .caption Golang mascot by Kirael-Art
 
-## docker example
-
-Dockerfile:
-
-.code Dockerfile /START OMIT/,/END OMIT/
-
 ## http example
 
 .code example.go /^func http_run/,/^}/
