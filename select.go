@@ -12,11 +12,11 @@ func main() {
 		somec <- struct{}{}
 	}()
 
-	select {
-	case <-somec:
-	case <-time.After(time.Second):
-		log.Print("timeout")
-	}
+	select { // HL
+	case <-somec: // HL
+	case <-time.After(time.Second): // HL
+		log.Print("timeout") // HL
+	} // HL
 
 	log.Print("done")
 }

@@ -11,12 +11,12 @@ func main() {
 		for {
 			log.Print("waiting")
 
-			select {
-			case <-r.Context().Done():
-				log.Print("done")
-				return
-			case <-time.After(time.Second):
-			}
+			select { // HL
+			case <-r.Context().Done(): // HL
+				log.Print("done") // HL
+				return            // HL
+			case <-time.After(time.Second): // HL
+			} // HL
 		}
 	})
 
