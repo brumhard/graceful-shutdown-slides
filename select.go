@@ -7,6 +7,10 @@ import (
 
 func main() {
 	somec := make(chan struct{})
+	// OMIT
+	go func() { // OMIT
+		somec <- struct{}{} // OMIT
+	}() // OMIT
 
 	select { // HL
 	case <-somec: // HL
