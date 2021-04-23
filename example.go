@@ -44,7 +44,7 @@ func main() {
 	// HANDLE END OMIT
 
 	// RUN START OMIT
-	if err := run(ctx); err != nil {
+	if err := http_run(ctx); err != nil {
 		_, _ = fmt.Fprintf(os.Stderr, "%s\n", err)
 		os.Exit(exitCodeErr)
 	}
@@ -66,7 +66,6 @@ func run(ctx context.Context) error {
 		time.Sleep(5 * time.Second) // work to do before shutdown // HL
 	}()
 
-	<-ctx.Done() // waiting for context cancel from main // HL
 	wg.Wait()
 
 	return nil

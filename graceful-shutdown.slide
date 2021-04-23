@@ -16,11 +16,24 @@ _"The select statement lets a goroutine wait on multiple communication operation
 
 .play -edit select.go /^func main/,/^}/
 
+: go func() {
+:     somec <- struct{}{}
+: }()
+
 ## context package
 
 _"Package context defines the Context type, which carries deadlines, cancellation signals, and other request-scoped values across API boundaries and between processes."_
 
 .play -edit ctx.go /^func main/,/^}/
+
+: - context of a request
+: - use cases (for example for goroutines): cancellation, timeouts/ deadlines, request values (key value)
+: - in this case: cancellation (needed for graceful shutdown)
+: - safe to use in multiple goroutines in parallel
+:
+: case <-r.Context().Done():
+:     log.Print("done")
+:     return
 
 ## signals
 
@@ -33,6 +46,10 @@ _"Package context defines the Context type, which carries deadlines, cancellatio
 
 ## main()
 
+: purpose of graceful shutdown -> listening to a cancellation request, leave in a clean state (.e.g web requests)
+: becomes more important in context of e.g. kubernetes
+: or clis that start long running process
+
 ## func main - structure
 
 .code example_structure.go
@@ -42,6 +59,10 @@ _"Package context defines the Context type, which carries deadlines, cancellatio
 context initialization:
 
 .code -numbers example.go /CTX START OMIT/,/CTX END OMIT/
+
+: this time not getting the context from request but creating a new one
+: context.Background() creates empty context -> no timeout
+: with cancel returns a function to cancel the context
 
 signal initialization:
 
@@ -62,9 +83,9 @@ run():
 
 ## func run
 
-.code example.go /^func run/,/^}/
+.code -numbers example.go /^func run/,/^}/
 
-: TODO: speaker notes
+: sync.WaitGroup basically like counter
 
 ##
 
@@ -73,4 +94,4 @@ run():
 
 ## http example
 
-.code example.go /^func http_run/,/^}/
+.code -numbers example.go /^func http_run/,/^}/

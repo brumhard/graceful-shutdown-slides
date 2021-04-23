@@ -1,5 +1,7 @@
 package main
 
+import "context"
+
 func main() {
 	// context initialization
 
@@ -8,4 +10,8 @@ func main() {
 	// signal handling
 
 	// run()
+}
+
+func run(ctx context.Context) error {
+	// do sth while listening to ctx
 }

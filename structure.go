@@ -12,13 +12,15 @@ func main() {
 func printStructure() {
 	structure := `structure:
 - basics
+	- select statement
 	- context package
 	- signals
-	- select statement
-- demo
-	- basic run function
-	- container shutdown
-	- http server`
+- graceful shutdown
+	- basic example
+	- different signals
+	- http server
+	
+Have fun.`
 
 	fmt.Print(structure)
 }

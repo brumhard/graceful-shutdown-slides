@@ -8,10 +8,6 @@ import (
 func main() {
 	somec := make(chan struct{})
 
-	go func() {
-		somec <- struct{}{}
-	}()
-
 	select { // HL
 	case <-somec: // HL
 	case <-time.After(time.Second): // HL

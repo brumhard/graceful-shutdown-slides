@@ -12,9 +12,6 @@ func main() {
 			log.Print("waiting")
 
 			select { // HL
-			case <-r.Context().Done(): // HL
-				log.Print("done") // HL
-				return            // HL
 			case <-time.After(time.Second): // HL
 			} // HL
 		}
